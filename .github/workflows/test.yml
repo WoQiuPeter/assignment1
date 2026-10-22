@@ -1,0 +1,40 @@
+name: Test shopping cart
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run lint
+  docker:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build from the public GitHub repository
+        run: docker build --no-cache -t assignment1 .
+      - name: Run a shopping session inside Docker
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf 'add P1 2\nadd P2 3\ncheckout\n' | docker run --rm -i assignment1 > docker-result.txt
+          cat docker-result.txt
+          grep -F '结账成功' docker-result.txt
+          grep -F '35.50 元' docker-result.txt

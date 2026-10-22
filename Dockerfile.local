@@ -1,0 +1,8 @@
+# 仅用于发布前验证本地文件；课程提交使用 Dockerfile。
+FROM node:24-bookworm
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm test
+ENTRYPOINT ["node", "src/index.js"]

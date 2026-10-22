@@ -1,0 +1,40 @@
+本地检查时间：2026/10/22 11:34:57（Asia/Shanghai）
+输出中的项目绝对路径替换为 <project>，不影响检查结果。
+
+> npm test
+
+> assignment1-shopping-cart@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.12 <project>
+
+
+ Test Files  2 passed (2)
+      Tests  80 passed (80)
+   Start at  11:34:58
+   Duration  942ms (transform 142ms, setup 0ms, import 358ms, tests 189ms, environment 0ms)
+
+
+退出码：0
+
+> npm run lint
+
+> assignment1-shopping-cart@1.0.0 lint
+> eslint src test vitest.config.js
+
+
+退出码：0
+
+> npm start（真实终端输入流程）
+退出码：0，错误处理、金额及结账退出均已核对。
+
+依赖检查：仅使用原模板列出的七个开发包，应用只导入自有模块和 Node.js 内置模块。
+
+不提供覆盖率数字：按课程限制移除模板外的覆盖率包。
+
+仓库配置：尚待 GitHub 账号认证后填写。
+
+GitHub 发布和 Docker 云端测试以真实仓库与 Actions 结果为准；本地检查不代表远端通过。
+
+真实同行评审、本人录制视频及 Canvas 提交仍需按课程要求完成。

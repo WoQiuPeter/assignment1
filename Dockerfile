@@ -1,9 +1,11 @@
-# Use the official Node.js 23 image from Amazon ECR Public Gallery
-FROM public.ecr.aws/docker/library/node:23
+FROM node:24-bookworm
 
 WORKDIR /app
 
-# Update the below line, so that it uses the https url to your git repo on github
-RUN git clone https://github.com/pobengtsson/bth012-a1-part-a.git .
+# 提交前必须把默认值替换为自己的公开仓库 HTTPS URL，并推送此修改。
+# 不使用教师仓库，否则容器里运行的将是教师模板。
+ARG REPO_URL=https://github.com/WoQiuPeter/assignment1.git
+RUN git clone --depth 1 "$REPO_URL" .
+RUN npm ci && npm test
 
 ENTRYPOINT ["node", "src/index.js"]

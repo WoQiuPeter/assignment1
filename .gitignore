@@ -131,3 +131,6 @@ dist
 
 
 .lh
+
+# Generated previews and scratch files
+tmp/
