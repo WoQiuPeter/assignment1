@@ -2,6 +2,8 @@
 
 基于 [BTH012 课程模板](https://github.com/pobengtsson/bth012-a1-part-a)，原模板作者为 Per-Olof Bengtsson。现已按完整购物车题目核对字段、循环与依赖限制。
 
+个人公开仓库：[WoQiuPeter/assignment1](https://github.com/WoQiuPeter/assignment1)。已通过重新克隆验证、80 项测试、Windows/Linux 自动测试及云端 Docker 构建和购物流程检查，详见 [发布与测试结果](docs/发布与测试结果.md)。
+
 ## 运行
 
 在本目录打开终端，需要 Node.js 24 或以上：
@@ -82,13 +84,13 @@ Python PDF 排版工具不属于应用程序，保留在项目外的本地工作
 
 ## Docker
 
-Dockerfile 必须填写个人公开 GitHub 仓库的真实 HTTPS URL，并先将全部文件推送。个人仓库地址已配置，见 docs/仓库地址.md；发布状态以实际记录为准。地址修改脚本见 `tools/set-repository.ps1`，也可直接编辑 Dockerfile 的 `ARG REPO_URL`。
+Dockerfile、Git origin 和项目元数据均已配置为 `https://github.com/WoQiuPeter/assignment1.git`，源码已推送。老师可以直接重新克隆并执行以下命令，无需填写占位路径。
 
 ```text
 docker build --no-cache -t assignment1 .
 docker run --rm -it assignment1
 ```
 
-`Dockerfile.local` 只用于发布前验证本地副本。此电脑未运行容器；个人仓库发布、Docker 实测、真实同行评审与本人视频上传仍待完成。
+`Dockerfile.local` 用于验证本地副本。正式 Dockerfile 已在 GitHub 的 Ubuntu 环境完成构建与容器运行验证；这台 Windows 电脑尚未安装 Docker。真实同行评审、本人视频录制和 Canvas 上传仍需完成。
 
 这是个人作业，请根据课程 AI 使用指南核实辅助方式并如实说明，确保能独立解释提交的代码。
